@@ -1536,6 +1536,232 @@ hr { display: none !important; }
   }
 }
 
+
+/* ===== Hero mobile — taller, image visible ===== */
+@media (max-width: 860px) {
+  .hero {
+    min-height: 100svh !important;
+    min-height: 100vh !important;
+    padding: 110px 18px 48px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-end !important;
+    align-items: stretch !important;
+  }
+  .hero-bg img {
+    object-fit: cover !important;
+    object-position: center 15% !important;
+  }
+  .hero-bg::after {
+    background:
+      linear-gradient(180deg,
+        rgba(0,0,0,0.15) 0%,
+        rgba(0,0,0,0.2) 35%,
+        rgba(0,0,0,0.55) 65%,
+        rgba(0,0,0,0.88) 100%) !important;
+  }
+  .hero-inner {
+    max-width: 100% !important;
+    padding-bottom: 8px;
+  }
+  .hero-title-row h1 {
+    font-size: clamp(2rem, 10vw, 2.75rem) !important;
+  }
+  .hero-lead {
+    font-size: 0.9rem !important;
+    line-height: 1.5 !important;
+    max-height: none !important;
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .hero-cta-row {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 10px !important;
+  }
+  .hero-cta-row .btn {
+    width: 100%;
+    justify-content: center;
+  }
+  .hero-stat-pill {
+    justify-content: center;
+    width: 100%;
+  }
+  .hero-brands { display: none !important; }
+  .hero-resources { display: none !important; }
+}
+
+/* ===== Services: carousel mode on mobile ===== */
+.svc-carousel-wrap {
+  display: none;
+}
+@media (max-width: 860px) {
+  .services-sec {
+    display: block !important;
+    padding: 48px 18px 56px !important;
+  }
+  .services-nav .svc-list,
+  .svc-panel-desktop,
+  .svc-mobile-story {
+    display: none !important;
+  }
+  .svc-carousel-wrap {
+    display: block !important;
+    margin-top: 24px;
+  }
+  .svc-car-text {
+    margin-bottom: 20px;
+  }
+  .svc-car-text h3 {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 10px;
+    letter-spacing: -0.02em;
+  }
+  .svc-car-text h3 span { color: #ef2d3c; }
+  .svc-car-text p {
+    color: rgba(255,255,255,0.65);
+    font-size: 0.92rem;
+    line-height: 1.55;
+  }
+  .svc-car-image {
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.1);
+    aspect-ratio: 16/10;
+    background: #111;
+    margin-bottom: 18px;
+  }
+  .svc-car-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .svc-car-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+  }
+  .svc-car-nav button {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.14);
+    color: #fff;
+    font-size: 1.2rem;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+  }
+  .svc-car-nav button:hover {
+    background: rgba(255,255,255,0.12);
+  }
+  .svc-car-dots {
+    display: flex;
+    gap: 6px;
+  }
+  .svc-car-dots span {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.25);
+  }
+  .svc-car-dots span.active {
+    background: #ef2d3c;
+    width: 18px;
+    border-radius: 4px;
+  }
+}
+
+/* ===== Portfolio stacked carousel (coverflow/stack) ===== */
+.carousel {
+  height: 360px !important;
+  perspective: 1400px;
+  position: relative;
+  overflow: visible !important;
+}
+.carousel-track {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+}
+.carousel-card {
+  position: absolute !important;
+  width: min(520px, 78vw) !important;
+  height: 280px !important;
+  border-radius: 18px !important;
+  overflow: hidden !important;
+  border: 1px solid rgba(255,255,255,0.12) !important;
+  transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.55s, filter 0.55s !important;
+  left: 50%;
+  top: 50%;
+  margin: 0 !important;
+  transform-origin: center center;
+}
+.carousel-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.carousel-card .cap {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 16px 18px;
+  background: linear-gradient(transparent, rgba(0,0,0,0.85));
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+/* Stack positions */
+.carousel-card.is-center {
+  z-index: 5 !important;
+  opacity: 1 !important;
+  filter: none !important;
+  transform: translate(-50%, -50%) scale(1) !important;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.55) !important;
+}
+.carousel-card.is-side.left {
+  z-index: 3 !important;
+  opacity: 0.7 !important;
+  filter: brightness(0.7) !important;
+  transform: translate(calc(-50% - 18%), -48%) scale(0.88) rotate(-4deg) !important;
+}
+.carousel-card.is-side:not(.left) {
+  z-index: 3 !important;
+  opacity: 0.7 !important;
+  filter: brightness(0.7) !important;
+  transform: translate(calc(-50% + 18%), -48%) scale(0.88) rotate(4deg) !important;
+}
+.carousel-card.is-back {
+  z-index: 1 !important;
+  opacity: 0.35 !important;
+  filter: brightness(0.5) !important;
+  transform: translate(-50%, -42%) scale(0.78) !important;
+}
+@media (max-width: 860px) {
+  .carousel {
+    height: 300px !important;
+  }
+  .carousel-card {
+    width: min(340px, 86vw) !important;
+    height: 220px !important;
+  }
+  .carousel-card.is-side.left {
+    transform: translate(calc(-50% - 12%), -46%) scale(0.86) rotate(-3deg) !important;
+  }
+  .carousel-card.is-side:not(.left) {
+    transform: translate(calc(-50% + 12%), -46%) scale(0.86) rotate(3deg) !important;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -1560,7 +1786,7 @@ hr { display: none !important; }
     <div class="hero-title-row">
       <h1>THERA STUDIO</h1>
       <img class="hero-star-img" src="data:image/png;base64,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" alt="" width="72" height="72"></div>
-    <p class="hero-lead">A THERA STUDIO é uma estúdio de design e tecnologia criativa. Trabalhamos com Design Gráfico, Design Digital, IA Generativa, Sites e Apps, Motion Design e Animação — usando inteligência artificial em todos os fluxos, do conceito à entrega final.</p>
+    <p class="hero-lead">A THERA STUDIO é um estúdio de design e tecnologia criativa. Trabalhamos com Design Gráfico, Design Digital, IA Generativa, Sites e Apps, Motion Design e Animação — usando inteligência artificial em todos os fluxos, do conceito à entrega final.</p>
     <div class="hero-cta-row">
       <a class="btn btn-primary" href="https://wa.me/5511914334233" target="_blank" rel="noopener noreferrer">
         Quero um projeto
@@ -1708,6 +1934,22 @@ hr { display: none !important; }
   </div>
 </section>
 
+
+  
+  <div class="svc-carousel-wrap" id="svc-carousel">
+    <div class="svc-car-text">
+      <h3 id="svc-car-title"><span>01.</span> Design Gráfico &amp; Digital</h3>
+      <p id="svc-car-desc">Identidades, sistemas visuais, UI/UX e peças de marca. Do briefing ao arquivo final, com IA apoiando pesquisa, variações e produção — sempre com direção de arte humana.</p>
+    </div>
+    <div class="svc-car-image">
+      <img id="svc-car-img" src="" alt="">
+    </div>
+    <div class="svc-car-nav">
+      <button type="button" id="svc-car-prev" aria-label="Anterior">‹</button>
+      <div class="svc-car-dots" id="svc-car-dots"></div>
+      <button type="button" id="svc-car-next" aria-label="Próximo">›</button>
+    </div>
+  </div>
 
   <div class="svc-mobile-story" id="svc-mobile-story">
     <div class="svc-story-item" data-story="0">
@@ -2066,29 +2308,78 @@ window.THERA_SLIDES=[{cap:"Arte de personagem criada pela THERA STUDIO com ",src
       var i = +btn.getAttribute('data-svc');
       list.querySelectorAll('button').forEach(function(b){ b.classList.toggle('active', b===btn); });
       var s = services[i];
-      panel.innerHTML = '<h3><span>'+s.t.slice(0,3)+'</span> '+s.t.slice(4)+'</h3><p>'+s.d+'</p><div class="svc-panel-art">'+s.a+'</div>';
+      panel.innerHTML = '<h3><span>'+s.t.slice(0,3)+'</span> '+s.t.slice(4)+'</h3><p>'+s.d+'</p><div class="svc-panel-art">'+(s.a||'')+'</div>';
     });
   }
 
   /* Simple carousel labels */
+  /* Portfolio stacked carousel */
   var slides = window.THERA_SLIDES || [];
   var idx = 1;
   function renderCar(){
     var track = document.getElementById('carousel-track');
     if(!track || !slides.length) return;
-    var prev = (idx - 1 + slides.length) % slides.length;
-    var next = (idx + 1) % slides.length;
+    var n = slides.length;
+    var prev = (idx - 1 + n) % n;
+    var next = (idx + 1) % n;
+    var back = (idx + 2) % n;
     function card(i, cls){
       var s = slides[i];
       return '<div class="carousel-card '+cls+'"><img src="'+s.src+'" alt="'+s.cap+'"><div class="cap">'+s.cap+'</div></div>';
     }
-    track.innerHTML = card(prev,'is-side left')+card(idx,'is-center')+card(next,'is-side');
+    track.innerHTML =
+      card(back, 'is-back') +
+      card(prev, 'is-side left') +
+      card(next, 'is-side') +
+      card(idx, 'is-center');
   }
   var prevBtn = document.getElementById('car-prev');
   var nextBtn = document.getElementById('car-next');
-  if(prevBtn) prevBtn.addEventListener('click', function(){ idx = (idx-1+slides.length)%slides.length; renderCar(); });
-  if(nextBtn) nextBtn.addEventListener('click', function(){ idx = (idx+1)%slides.length; renderCar(); });
+  if(prevBtn) prevBtn.onclick = function(){ idx = (idx - 1 + slides.length) % slides.length; renderCar(); };
+  if(nextBtn) nextBtn.onclick = function(){ idx = (idx + 1) % slides.length; renderCar(); };
   renderCar();
+
+  /* Services mobile/desktop carousel with arrows */
+  (function(){
+    var services = [
+      { t: '01. Design Gráfico & Digital', d: 'Identidades, sistemas visuais, UI/UX e peças de marca. Do briefing ao arquivo final, com IA apoiando pesquisa, variações e produção — sempre com direção de arte humana.' },
+      { t: '02. IA Generativa', d: 'Imagens, vídeo e automação criativa em todos os fluxos da THERA. Modelos de ponta com método e curadoria — resultado de estúdio, não genérico.' },
+      { t: '03. Motion Design & Animação', d: 'Motion de marca, animação e narrativa visual. Storyboard, geração assistida por IA e finalização com qualidade de estúdio.' },
+      { t: '04. Sites & Apps', d: 'Sites institucionais, landings e interfaces. Design, prototipagem e produção com apoio de IA e foco em performance e clareza.' },
+      { t: '05. Direção de Arte', d: 'Visão criativa unificada do conceito à execução. Um único olhar conduz design, motion, web e IA para a marca falar a mesma língua.' }
+    ];
+    var sIdx = 0;
+    var titleEl = document.getElementById('svc-car-title');
+    var descEl = document.getElementById('svc-car-desc');
+    var imgEl = document.getElementById('svc-car-img');
+    var dotsEl = document.getElementById('svc-car-dots');
+    if(!titleEl) return;
+
+    function imgs(){
+      return (window.THERA_SLIDES || []).map(function(s){ return s.src; });
+    }
+    function render(){
+      var s = services[sIdx];
+      var parts = s.t.split('. ');
+      titleEl.innerHTML = '<span>'+parts[0]+'.</span> '+(parts[1]||s.t);
+      descEl.textContent = s.d;
+      var list = imgs();
+      if(list.length && imgEl){
+        imgEl.src = list[sIdx % list.length];
+        imgEl.alt = s.t;
+      }
+      if(dotsEl){
+        dotsEl.innerHTML = services.map(function(_,i){
+          return '<span class="'+(i===sIdx?'active':'')+'"></span>';
+        }).join('');
+      }
+    }
+    var p = document.getElementById('svc-car-prev');
+    var n = document.getElementById('svc-car-next');
+    if(p) p.onclick = function(){ sIdx = (sIdx - 1 + services.length) % services.length; render(); };
+    if(n) n.onclick = function(){ sIdx = (sIdx + 1) % services.length; render(); };
+    render();
+  })();
 
   /* Legal pages */
   var pages = ['termos','privacidade','seguranca','documentacao'];
